@@ -3,7 +3,7 @@
 ## Разработка шаблона на примере тестирования сайта Кинопоиск
 
 ### Шаги:
-1. Склонировать репозитой "git clone"
+1. Склонировать репозитой "git clone https://github.com/ViacheslavKriatchenko/Sky_final_Auto.git"
 2. Запустить виртуальное окружение "python -m venv venv"
 3. Установить окружение "python -m pip install -r requirements.txt"
 4. Запустить тесты
@@ -21,7 +21,7 @@
 - ./config - ссылки, переменные, конф.настройки
 
 ### Полезные ссылки:
-[Гайд по Markdown](https://www.markdownguide.org/basic-syntax/)
+[Гайд по Markdown](https://www.markdownguide.org/basic-syntax/)  
 [Сайт генератор .gitignore](https://www.toptal.com/developers/gitignore)
 
 ### Библиотеки:

@@ -1,0 +1,14 @@
+{
+    "api": {
+        "TOKEN": "0HNA0QZ-VXA4T12-HHKD3SB-DTRX68P",
+        "MOVIE_ID_valid": "444",
+        "MOVIE_ID_not_valid": "100",
+        "STATUS_CODE_400": "400",
+        "MOVIE_NAME": "Тер"
+    },
+    "ui": {
+        "login": "QaTester",
+        "email": "SuperPuperTester@gmail.com",
+        "password": "password"
+    }
+}

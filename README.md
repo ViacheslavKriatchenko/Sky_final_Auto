@@ -16,14 +16,26 @@
 - Allure
 
 ### Структура:
+- ./api - методы для работы с API
+- ./config - настройка конфигурации
+    - config_page.py - конструктор страниц
+    - ConfigProvider.py - глобальные настройки
+- ./pages - описание страниц сайта
 - ./tests - тесты
-- ./pages - страницы сайта
-- ./config - ссылки, переменные, конф.настройки
+    - test_API.py - API тесты
+    - test_UI.py - UI тесты
+- ./userdata - провайдер пользовательских данных
+    - DataProvider.py
+- conftest.py - фикстуры
+- global_options.ini - глобальные переменные
+- pytest.ini - настройка тестов
+- requirements.txt - настройка окружения
+- user_data.json - пользовательские данные
 
 ### Полезные ссылки:
 [Гайд по Markdown](https://www.markdownguide.org/basic-syntax/)  
-[Сайт генератор .gitignore](https://www.toptal.com/developers/gitignore)
-[Перенос окружения](https://pip.pypa.io/en/stable/cli/pip_freeze/)
+[Сайт генератор .gitignore](https://www.toptal.com/developers/gitignore)  
+[Перенос окружения](https://pip.pypa.io/en/stable/cli/pip_freeze/)  
 [Вызов PyTest инструкция](https://pytest-docs-ru.readthedocs.io/ru/latest/usage.html)
 
 ### Библиотеки:

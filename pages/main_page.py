@@ -7,12 +7,14 @@ class MainPage(ConfigPage):
 
     PAGE_URL = Links.HOST
 
+    # page locators:
     locators = [
         {'ENTER_BUTTON_LOCATOR': '//button[text()="Войти"]'}
     ]
     ENTER_BUTTON_LOCATOR = ('xpath', '//button[text()="Войти"]')
     SEARCH_FIELD_LOCATOR = ('xpath' '//input[@name="kp_query"]')
 
+    # functions:
     def click_login_button(self):
         self.wait.until(
             EC.element_to_be_clickable((self.ENTER_BUTTON_LOCATOR))

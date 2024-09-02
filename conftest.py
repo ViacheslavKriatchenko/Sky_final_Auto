@@ -12,9 +12,11 @@ import pytest
 def driver():
     options = ChromeOptions()
     # options.add_argument('--headless')
-    options.add_argument('--window-size=1920,1080')
+    options.add_argument("--window-size=1920,1080")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0")
+    options.add_argument(
+        "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0"
+    )
     service = ChromeService(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(options=options, service=service)
     yield driver

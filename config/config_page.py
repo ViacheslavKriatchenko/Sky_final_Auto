@@ -1,13 +1,16 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import allure
+# from config.ConfigProvider import ConfigProvider
 
 
 class ConfigPage:
 
     def __init__(self, driver) -> None:
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10, poll_frequency=1)
+        self.wait = WebDriverWait(
+            driver, timeout=10, poll_frequency=1
+            )
 
     def open_the_page(self):
         with allure.step(f'Open {self.PAGE_URL} page'):

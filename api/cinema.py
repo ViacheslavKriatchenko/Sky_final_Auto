@@ -4,14 +4,17 @@ import allure
 
 class Cinema:
 
-    HOST_URL = "https://api.kinopoisk.dev/"
-    TOKEN = "0HNA0QZ-VXA4T12-HHKD3SB-DTRX68P"
+    def __init__(self, HOST_URL: str, TOKEN: str) -> None:
+        self.HOST_URL = HOST_URL
+        self.TOKEN = TOKEN
 
-    my_header = {"X-API-KEY": TOKEN}
-
+    @allure.step('Поиск фильма по {id}')
     def search_movie_by_id(self, id: int) -> dict:
         response = requests.get(
-            url=f"{self.HOST_URL}/v1.4/movie/{id}", headers=self.my_header
+            url=f"{self.HOST_URL}/v1.4/movie/{id}",
+            headers={
+                "X-API-KEY": self.TOKEN
+            }
         )
         return response.json()
 
@@ -21,11 +24,13 @@ class Cinema:
     ) -> dict:
         response = requests.get(
             url=f"{self.HOST_URL}/v1.4/movie/search",
-            headers=self.my_header,
+            headers={
+                "X-API-KEY": self.TOKEN
+            },
             params={
                 "page": page_number,
                 "limit": elements_number,
-                "query": movie_name}
+                "query": movie_name
+            }
         )
         return response.json()
-

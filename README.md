@@ -23,6 +23,8 @@
 ### Полезные ссылки:
 [Гайд по Markdown](https://www.markdownguide.org/basic-syntax/)  
 [Сайт генератор .gitignore](https://www.toptal.com/developers/gitignore)
+[Перенос окружения](https://pip.pypa.io/en/stable/cli/pip_freeze/)
+[Вызов PyTest инструкция](https://pytest-docs-ru.readthedocs.io/ru/latest/usage.html)
 
 ### Библиотеки:
 - pip install selenium

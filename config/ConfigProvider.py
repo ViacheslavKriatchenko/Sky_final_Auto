@@ -10,7 +10,7 @@ class ConfigProvider:
         self.config = global_config
 
     def get(self, section: str, prop: str):
-        return self.config[section].get[prop]
+        return self.config.get(section, prop)
 
     def getint(self, section: str, prop: str) -> int:
-        return self.config[section].getint[prop]
+        return self.config.getint(section, prop)

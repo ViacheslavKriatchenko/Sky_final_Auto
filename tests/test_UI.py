@@ -7,7 +7,7 @@ from userdata.DataProvider import DataProvider
 
 
 def test_auth(driver):
-    data = DataProvider().getUI('login')
+    data = DataProvider().getUI('LOGIN')
     main = MainPage(driver)
     login = LoginPage(driver)
 

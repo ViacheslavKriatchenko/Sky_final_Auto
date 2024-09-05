@@ -1,11 +1,13 @@
 from config.config_page import ConfigPage
 from config.links import Links
 from selenium.webdriver.support import expected_conditions as EC
+from config.ConfigProvider import ConfigProvider
 
 
 class MainPage(ConfigPage):
 
-    PAGE_URL = Links.HOST
+    #  PAGE_URL = Links.HOST
+    PAGE_URL = ConfigProvider().get(section='ui', prop='HOST')  # что лучше
 
     # page locators:
     locators = [

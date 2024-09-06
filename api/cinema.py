@@ -1,5 +1,6 @@
 import requests
 import allure
+# import pandas as pd
 
 
 class Cinema:
@@ -63,7 +64,7 @@ class Cinema:
             rating_imdb: str,
             genres_name: str = None,
             page=1,
-            limit=10  # Union[str, float] / ошибка дефолтных значений
+            limit=10
     ) -> dict:
 
         response = requests.get(
@@ -80,3 +81,25 @@ class Cinema:
             }
         )
         return response.json()
+
+    @allure.step("Поиск актеров, режиссеров и т.д...")
+    def search_actor(self, actor_name: str, page=1, limit=10) -> dict:
+
+        response = requests.get(
+            url=f"{self.HOST_URL}/v1.4/person/search",
+            headers={
+                "X-API-KEY": self.TOKEN
+            },
+            params={
+                "page": page,
+                "limit": limit,
+                "query": actor_name
+            }
+        )
+        # return response.json()
+        if response.status_code == 200:
+            return response.json()
+        else:
+            raise Exception(
+                f"API request failed with status code {response.status_code}"
+                )

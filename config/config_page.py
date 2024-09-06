@@ -9,7 +9,9 @@ class ConfigPage:
     def __init__(self, driver) -> None:
         self.driver = driver
         self.wait = WebDriverWait(
-            driver, timeout=ConfigProvider().getint(section='common', prop='time'), poll_frequency=1
+            driver, timeout=ConfigProvider().getint(
+                section='common', prop='time'
+                ), poll_frequency=1
             )
 
     def open_the_page(self):

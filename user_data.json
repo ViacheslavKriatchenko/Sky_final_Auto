@@ -4,7 +4,7 @@
         "MOVIE_ID_valid": "444",
         "MOVIE_ID_not_valid": "100",
         "STATUS_CODE_400": "400",
-        "MOVIE_NAME": "Тер",
+        "MOVIE_NAME": "Terminator",
         "FIELD": [
             "genres.name",
             "countries.name",
@@ -15,7 +15,9 @@
         ],
         "YEAR": "1991",
         "GENRES.NAME": "боевик, фантастика",
-        "RAITING_IMDB": "8.1-10"
+        "RAITING_IMDB": "8.1-10",
+        "ASSERT_MOVIE_NAME": "Terminator 2: Judgment Day",
+        "ACTOR_NAME": "Arnold Schwarzenegger"
     },
     "ui": {
         "LOGIN": "QaTester",

@@ -26,3 +26,6 @@ class ConfigPage:
     def get_current_url(self):
         URL = self.driver.current_url
         return URL
+
+    def save_screenshot(self):
+        self.driver.save_screenshot('error.png')

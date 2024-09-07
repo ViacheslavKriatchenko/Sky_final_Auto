@@ -9,7 +9,7 @@ class Cinema:
         self.HOST_URL = HOST_URL
         self.TOKEN = TOKEN
 
-    @allure.step("Поиск фильма по {id}")
+    @allure.step("Поиск фильма по id = {id}")
     def search_movie_by_id(
         self,
         id: int

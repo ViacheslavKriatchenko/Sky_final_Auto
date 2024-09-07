@@ -1,13 +1,15 @@
 # Sky_final_Auto
 
 ## Разработка шаблона на примере тестирования сайта Кинопоиск
-На момент написания, тесты находят реальные баги как со стороны UI, так и API и тесты падают.
+На момент написания, тесты находят реальные баги как со стороны UI, так и API и тесты падают.  
+Из-за специфики защиты сайта, используется sleep для обхода капчи.
 
 ### Шаги:
 1. Склонировать репозитой "git clone https://github.com/ViacheslavKriatchenko/Sky_final_Auto.git"
 2. Запустить виртуальное окружение "python -m venv venv"
 3. Установить окружение "python -m pip install -r requirements.txt"
-4. Запустить тесты
+4. Запустить тесты "pytest -s -v --alluredir allure_results"
+5. Просмотреть отчет "allure serve allure_results"
 
 ### Стэк:
 - Selenium

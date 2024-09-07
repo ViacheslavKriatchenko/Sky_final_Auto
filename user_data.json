@@ -22,6 +22,7 @@
     "ui": {
         "LOGIN": "QaTester",
         "EMAIL": "SuperPuperTester@gmail.com",
-        "PASSWORD": "password"
+        "PASSWORD": "password",
+        "SEARCH_MOVIE": "Equilibrium"
     }
 }

@@ -7,7 +7,7 @@ from random import randint
 
 
 @allure.title('Тело ответа возвращает запрашиваемый id')
-@allure.description('Отправим запрос с валидным id и проверим,'
+@allure.description('Отправим запрос с валидным id и проверим, '
                     'что тело вернет ответ с нужным параметром')
 @pytest.mark.positive
 def test_search_movie_by_id(get_token):
@@ -25,12 +25,12 @@ def test_search_movie_by_id(get_token):
 
     with allure.step('Проверка запрашиваемого и полученного ID'):
         assert ID == response['id'], "Ошибка данных"
-    with allure.step('Проверка названия фильма полученного по ID={ID}'):
+    with allure.step('Проверка названия фильма полученного по ID'):
         assert response['alternativeName'] == DataProvider().getAPI('ASSERT_MOVIE_NAME')  # кодировка
 
 
 @allure.title('Тело ответа возвращает ошибку при невалидном id')
-@allure.description('Отправим запрос с невалидным id и проверим,'
+@allure.description('Отправим запрос с невалидным id и проверим, '
                     'что тело вернет ошибку')
 @pytest.mark.negative
 def test_search_movie_by_false_id():
@@ -54,8 +54,8 @@ def test_search_movie_by_false_id():
 
 
 @allure.title('Тело ответа возвращает фильмы содержащие искомое слово')
-@allure.description('Отправим запрос со словом и проверим,'
-                    'что тело вернет список фильмов,'
+@allure.description('Отправим запрос со словом и проверим, '
+                    'что тело вернет список фильмов, '
                     'названия которых содержат введенное значение')
 @pytest.mark.positive
 def test_search_movie_by_name():
@@ -84,7 +84,7 @@ def test_search_movie_by_name():
 
 
 @allure.title('Тело ответа возвращает запрашиваемый список данных')
-@allure.description('Отправим запрос с параметром и проверим,'
+@allure.description('Отправим запрос с параметром и проверим, '
                     'что тело вернет ответ с нужным списком')
 @pytest.mark.positive
 def test_get_list_movie_info():
@@ -125,7 +125,7 @@ def test_universal_search_filter():
     with allure.step('Функциональный блок'):
         response = cinema.universal_search_filter(
             year=DataProvider().getAPI('YEAR'),
-            # genres_name=DataProvider().getAPI('GENRES.NAME'),
+            # genres_name=DataProvider().getAPI('GENRES.NAME'), ошибка кодировки
             rating_imdb=DataProvider().getAPI('RAITING_IMDB')
         )
 
@@ -133,7 +133,7 @@ def test_universal_search_filter():
         assert type(response) is dict
 
 
-@allure.title('Тело ответа возвращает запрашиваемый список данных')
+@allure.title('Тело ответа возвращает запрашиваемый список данных персоны')
 @allure.description('Отправим имя персоны для поиска')
 def test_search_actor():
     with allure.step('Наследуем переменным классы, запрашиваем данные'):
@@ -145,7 +145,7 @@ def test_search_actor():
         response = cinema.search_actor(actor_name=actor_name)
 
     with allure.step(
-        "Проверка. Получаем словарь и первая запись"
+        "Проверка. Получаем словарь и первая запись "
         "содержит данные по искомому имени"
     ):
         assert type(response) is dict

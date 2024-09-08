@@ -4,8 +4,10 @@ from pages.online_cinema_page import OnlineCinemaPage
 from time import sleep  # для отладки
 import allure
 from userdata.DataProvider import DataProvider
+from config.ConfigProvider import ConfigProvider
 
 
+@allure.issue('ui-1')
 @allure.title('Подтверждение пользователя')
 @allure.description('Нажмем кнопку Войти на главной странице,'
                     'введем логин и нажмем Войти, и проверим,'
@@ -19,6 +21,7 @@ def test_auth(driver):
 
     with allure.step('Функциональный блок'):
         main.open_the_page()
+        sleep(ConfigProvider().getint(section='common', prop='sleep'))  # отладка капчи вручную
         # main.page_is_opened()  # ошибка если капча
         main.click_login_button()
         login.enter_login_data(login_or_email=data)
@@ -28,6 +31,7 @@ def test_auth(driver):
         assert data == login.get_login_data()
 
 
+@allure.issue('ui-2')
 @allure.title('Работа кнопки отмена в разведеле авторизация')
 @allure.description('На главной странице нажмем "Войти" и'
                     'потом в окне авторизации нажмем стрелку "Назад"')
@@ -38,18 +42,19 @@ def test_unauthorization(driver):
 
     with allure.step('Функциональный блок'):
         online.open_the_page()
-        sleep(10)
+        sleep(ConfigProvider().getint(section='common', prop='sleep'))  # отладка капчи вручную
         before_url = online.get_current_url()
         # online.is_opened()  # ошибка если капча
         online.click_subscribe_button()
         login.click_prev_step_button()
-        sleep(10)
+        sleep(ConfigProvider().getint(section='common', prop='sleep'))  # отладка капчи вручную
         after_url = online.get_current_url()
 
     with allure.step('Проверка. Сравниваем адреса - страница вернулась обратно'):
-        assert before_url == after_url  # ошибка если капча
+        assert before_url == after_url, 'ошибка в работе сайта'  # ошибка если капча
 
 
+@allure.issue('ui-3')
 @allure.title('Отмена авторизации после добавления фильма в избранное без регистрации')
 @allure.description('Тест падает из-за бага, страница не возвращается обратно')
 def test_unauthorization_via_favorites(driver):
@@ -59,7 +64,7 @@ def test_unauthorization_via_favorites(driver):
 
     with allure.step('Функциональный блок'):
         online.open_the_page()
-        sleep(10)
+        sleep(ConfigProvider().getint(section='common', prop='sleep'))  # отладка капчи вручную
         before_url = online.get_current_url()
         online.click_movie()
         online.click_bookmark()
@@ -71,8 +76,9 @@ def test_unauthorization_via_favorites(driver):
         assert before_url == after_url, 'кнопка возврата не работает'
 
 
+@allure.issue('ui-4')
 @allure.title('Тестирование функции быстрого поиска')
-@allure.description('В поисковую строку введем данные и /////')
+@allure.description('В поисковую строку введем данные и запросим их')
 def test_fast_search(driver):
     with allure.step('Наследуем переменным классы, запрашиваем данные'):
         main = MainPage(driver)
@@ -80,7 +86,7 @@ def test_fast_search(driver):
 
     with allure.step('Функциональный блок'):
         main.open_the_page()
-        sleep(10)
+        sleep(ConfigProvider().getint(section='common', prop='sleep'))  # отладка капчи вручную
         result = main.enter_search_data(data=search)
 
     with allure.step(
@@ -89,9 +95,16 @@ def test_fast_search(driver):
         assert search in result
 
 
-def test_click_menu_button(driver):
-    main = MainPage(driver)
+@allure.issue('ui-5')
+@allure.title('Тестирование функции быстрого поиска')
+@allure.description('В поисковую строку введем данные и /////')
+def test_movie_selection(driver):
+    with allure.step('Наследуем переменным классы, запрашиваем данные'):
+        main = MainPage(driver)
 
-    main.open_the_page()
-    sleep(10)
-    main.click_menu_button()
+    with allure.step('Функциональный блок'):
+        main.open_the_page()
+        sleep(15)
+        text_search, text_find = main.movie_selection()
+    with allure.step('Проверка. Перешли на страницу с выбранным фильмом'):
+        assert text_search == text_find

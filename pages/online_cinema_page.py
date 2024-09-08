@@ -1,13 +1,12 @@
 from config.config_page import ConfigPage
 from selenium.webdriver.support import expected_conditions as EC
-from config.links import Links
 import allure
 from config.ConfigProvider import ConfigProvider
 
 
 class OnlineCinemaPage(ConfigPage):
 
-    # PAGE_URL = Links.ONLINE_CINEMA_PAGE
+    # переопределение адреса страницы
     PAGE_URL = ConfigProvider().get(section='ui', prop='ONLINE_CINEMA_PAGE')
 
     # page locators:
@@ -20,6 +19,7 @@ class OnlineCinemaPage(ConfigPage):
     BOOKMARK_LOCATOR = ('xpath', '//button[@name="Bookmark"]')
 
     # functions:
+    @allure.step('Натажие на кнопку "Оформить подписку"')
     def click_subscribe_button(self):
         self.wait.until(
             EC.element_to_be_clickable((self.SUBSCRIBE_BUTTON_LOCATOR))

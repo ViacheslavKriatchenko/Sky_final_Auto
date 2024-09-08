@@ -6,11 +6,13 @@ from selenium.webdriver.firefox.service import Service as FireService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FireOptions
 import pytest
+import allure
 from userdata.DataProvider import DataProvider
 from config.ConfigProvider import ConfigProvider
 
 
 @pytest.fixture()
+@allure.title('Подготовка к тесту, выбор браузера')
 def driver():
     DRIVER_NAME = ConfigProvider().get(section='common', prop='BROWSER')
     if DRIVER_NAME == 'Chrome':
@@ -38,6 +40,7 @@ def driver():
 
 
 @pytest.fixture()
+@allure.title('Подготовка к тесту, запрос токена')
 def get_token():
     TOKEN = DataProvider().getAPI('TOKEN')
     return TOKEN

@@ -27,5 +27,6 @@ class ConfigPage:
         URL = self.driver.current_url
         return URL
 
+    @allure.step('Сделать скриншот и сохранить в корень проекта как error.png')
     def save_screenshot(self):
         self.driver.save_screenshot('error.png')

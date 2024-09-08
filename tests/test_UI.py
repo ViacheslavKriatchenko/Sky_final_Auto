@@ -55,6 +55,7 @@ def test_unauthorization(driver):
 
 
 @allure.issue('ui-3')
+@allure.label('https://drive.google.com/file/d/1TLHPfAsag8OUjLTSDu_Bj3yUOzLnqMCT/view?usp=sharing', 'Баг')
 @allure.title('Отмена авторизации после добавления фильма в избранное без регистрации')
 @allure.description('Тест падает из-за бага, страница не возвращается обратно')
 def test_unauthorization_via_favorites(driver):
